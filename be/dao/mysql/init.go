@@ -1,6 +1,7 @@
-package model
+package mysql
 
 import (
+	"github.com/Milefer7/compliation_exp/model"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -29,7 +30,12 @@ func Init() {
 }
 
 func initTable(db *gorm.DB) {
-	err := db.AutoMigrate(&Alphabet{})
+	err := db.AutoMigrate(
+		&model.Alphabet{},
+		&model.Delimiter{},
+		&model.Words{},
+		&model.Keywords{},
+	)
 	if err != nil {
 		log.Fatalf("数据库表初始化错误: %s", err)
 	}
