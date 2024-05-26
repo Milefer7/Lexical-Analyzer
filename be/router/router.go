@@ -32,5 +32,6 @@ func InitRouter(e *gin.Engine) {
 	{
 		word.PUT("", controller.UpdateWords)
 		word.POST("", controller.CreateWords)
+		word.GET("", controller.ReadWords)
 	}
 }

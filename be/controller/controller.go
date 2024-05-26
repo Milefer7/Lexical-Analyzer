@@ -102,7 +102,21 @@ func CreateDelimiters(c *gin.Context) {
 // 词法分析
 // 获取词法分析结果
 func LexicalAnalysis(c *gin.Context) {
-
+	// 接受json数据
+	data := model.LexicalCode{}
+	err := c.ShouldBindJSON(&data)
+	if err != nil {
+		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
+		return
+	}
+	// 调用service层函数
+	LexicalAnalysis, err := service.LexicalAnalysis(data.Code)
+	// 将结果返回给前端
+	if err != nil {
+		code.CommonResp(c, http.StatusInternalServerError, code.Fail, err.Error(), code.EmptyData)
+		return
+	}
+	code.CommonResp(c, http.StatusOK, code.Success, "", LexicalAnalysis)
 }
 
 // 系统维护模块
@@ -182,4 +196,14 @@ func CreateWords(c *gin.Context) {
 		return
 	}
 	code.CommonResp(c, http.StatusOK, code.Success, "", code.EmptyData)
+}
+
+func ReadWords(c *gin.Context) {
+	err, words := service.NewWordsService().ReadWords()
+	if err != nil {
+		println(err.Error())
+		code.CommonResp(c, http.StatusInternalServerError, code.Fail, err.Error(), code.EmptyData)
+		return
+	}
+	code.CommonResp(c, http.StatusOK, code.Success, "", words)
 }

@@ -18,3 +18,7 @@ func (ws *WordsService) UpdateWords(word []model.Words) error {
 func (ws *WordsService) CreateWords(word []model.Words) error {
 	return mysql.NewWordsMySQL().CreatWords(word)
 }
+
+func (ws *WordsService) ReadWords() (error, []model.Words) {
+	return mysql.NewWordsMySQL().ReadWords()
+}

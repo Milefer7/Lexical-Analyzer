@@ -24,6 +24,13 @@
             </set>
           </value>
         </entry>
+        <entry key="Analysis">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/be/model/analysis.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="Delimiter">
           <value>
             <set>
@@ -63,6 +70,20 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/be/service/keywords.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="LexicalAnalysis">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/be/model/analysis.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="LexicalCode">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/be/model/analysis.go" />
             </set>
           </value>
         </entry>
@@ -113,14 +134,14 @@
         <entry key="file://$PROJECT_DIR$/be/controller/controller.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716715300738" />
+              <option name="lastModified" value="1716739242569" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/be/dao/mysql/alphabets.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716712635055" />
+              <option name="lastModified" value="1716736814105" />
               <option name="schema">
                 <list>
                   <option value="AlphabetMySQL" />
@@ -163,7 +184,7 @@
         <entry key="file://$PROJECT_DIR$/be/dao/mysql/words.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716716216375" />
+              <option name="lastModified" value="1716738950070" />
               <option name="schema">
                 <list>
                   <option value="WordsMySQL" />
@@ -186,6 +207,19 @@
               <option name="schema">
                 <list>
                   <option value="Alphabet" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/be/model/analysis.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1716736652760" />
+              <option name="schema">
+                <list>
+                  <option value="LexicalCode" />
+                  <option value="LexicalAnalysis" />
                 </list>
               </option>
             </ScannedPath>
@@ -230,19 +264,26 @@
         <entry key="file://$PROJECT_DIR$/be/router/router.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716712635027" />
+              <option name="lastModified" value="1716738950077" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/be/service/alphabets.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716712635049" />
+              <option name="lastModified" value="1716736815534" />
               <option name="schema">
                 <list>
                   <option value="AlphabetService" />
                 </list>
               </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/be/service/analysis.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1716739104035" />
             </ScannedPath>
           </value>
         </entry>
@@ -273,7 +314,7 @@
         <entry key="file://$PROJECT_DIR$/be/service/words.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716712635016" />
+              <option name="lastModified" value="1716738951198" />
               <option name="schema">
                 <list>
                   <option value="WordsService" />
@@ -289,12 +330,15 @@
         <entry key="alphabet" value="Alphabet" />
         <entry key="alphabet_my_sql" value="AlphabetMySQL" />
         <entry key="alphabet_service" value="AlphabetService" />
+        <entry key="analysis" value="Analysis" />
         <entry key="delimiter" value="Delimiter" />
         <entry key="delimiter_my_sql" value="DelimiterMySQL" />
         <entry key="delimiters_service" value="DelimitersService" />
         <entry key="keywords" value="Keywords" />
         <entry key="keywords_my_sql" value="KeywordsMySQL" />
         <entry key="keywords_service" value="KeywordsService" />
+        <entry key="lexical_analysis" value="LexicalAnalysis" />
+        <entry key="lexical_code" value="LexicalCode" />
         <entry key="resp_msg" value="RespMsg" />
         <entry key="words" value="Words" />
         <entry key="words_my_sql" value="WordsMySQL" />

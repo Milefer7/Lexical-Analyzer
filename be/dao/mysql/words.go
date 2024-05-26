@@ -30,3 +30,12 @@ func (WordsMySQL *WordsMySQL) CreatWords(words []model.Words) error {
 	}
 	return nil
 }
+
+func (WordsMySQL *WordsMySQL) ReadWords() (error, []model.Words) {
+	words := []model.Words{}
+	if err := db.Find(&words).Error; err != nil {
+		log.Println(err.Error())
+		return err, nil
+	}
+	return nil, words
+}
