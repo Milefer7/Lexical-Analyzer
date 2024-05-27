@@ -5,6 +5,7 @@ import (
 	"github.com/Milefer7/compliation_exp/model"
 	"github.com/Milefer7/compliation_exp/service"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -110,7 +111,9 @@ func LexicalAnalysis(c *gin.Context) {
 		return
 	}
 	// 调用service层函数
+	log.Println("data.Code: ", data.Code)
 	LexicalAnalysis, err := service.LexicalAnalysis(data.Code)
+	log.Printf("词法分析结果：%v", LexicalAnalysis)
 	// 将结果返回给前端
 	if err != nil {
 		code.CommonResp(c, http.StatusInternalServerError, code.Fail, err.Error(), code.EmptyData)

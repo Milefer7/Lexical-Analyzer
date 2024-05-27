@@ -134,7 +134,7 @@
         <entry key="file://$PROJECT_DIR$/be/controller/controller.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716739242569" />
+              <option name="lastModified" value="1716775344541" />
             </ScannedPath>
           </value>
         </entry>
@@ -215,7 +215,7 @@
         <entry key="file://$PROJECT_DIR$/be/model/analysis.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716736652760" />
+              <option name="lastModified" value="1716776333399" />
               <option name="schema">
                 <list>
                   <option value="LexicalCode" />
@@ -264,7 +264,7 @@
         <entry key="file://$PROJECT_DIR$/be/router/router.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716738950077" />
+              <option name="lastModified" value="1716773524025" />
             </ScannedPath>
           </value>
         </entry>
@@ -283,7 +283,7 @@
         <entry key="file://$PROJECT_DIR$/be/service/analysis.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1716739104035" />
+              <option name="lastModified" value="1716776792029" />
             </ScannedPath>
           </value>
         </entry>

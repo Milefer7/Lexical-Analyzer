@@ -20,7 +20,7 @@ func InitRouter(e *gin.Engine) {
 	}
 	analysis := e.Group("/analysis")
 	{
-		analysis.GET("/lexical", controller.LexicalAnalysis)
+		analysis.POST("/lexical", controller.LexicalAnalysis)
 	}
 	alphabet := e.Group("/alphabets")
 	{

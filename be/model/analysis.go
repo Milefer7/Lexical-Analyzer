@@ -5,7 +5,7 @@ type LexicalCode struct {
 }
 
 type LexicalAnalysis struct {
-	LineNum int    `json:"line_num"`
+	LineNum int    `json:"lineNum"`
 	Content string `json:"content"`
 	Type    string `json:"type"`
 }
