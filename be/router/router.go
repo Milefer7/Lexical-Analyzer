@@ -35,5 +35,5 @@ func InitRouter(e *gin.Engine) {
 		word.GET("", controller.ReadWords)
 	}
 	// ws接口
-	e.GET("/ws", controller.Ws)
+	//e.GET("/ws", controller.Ws)
 }
