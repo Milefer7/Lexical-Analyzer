@@ -7,7 +7,14 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: HomeView
+        component: HomeView,
+        cildren: [
+            {
+                path: 'popup',
+                name: 'Popup',
+                component: PopupView
+            }
+        ]
     },
     {
         path: '/popup',

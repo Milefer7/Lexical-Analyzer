@@ -1,13 +1,20 @@
-<!-- src/App.vue -->
 <template>
   <div id="app">
-    <router-view></router-view>
+    <HomeView></HomeView>
+    <!-- 添加一个链接到/popup的路由 -->
+    <RouterLink to="/popup">Go to Popup</RouterLink>
+    <RouterView></RouterView>
+  
   </div>
 </template>
 
 <script>
+import HomeView from '@/views/HomeView.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    HomeView
+  }
 }
 </script>
 

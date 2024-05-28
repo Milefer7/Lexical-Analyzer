@@ -21,11 +21,19 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
+
 export default {
-    methods: {
-        openPopup(component) {
-            this.$router.push({ name: 'Popup', query: { component } });
-        }
+    setup() {
+        const router = useRouter();
+
+        const openPopup = (component) => {
+            router.push({ name: 'Popup', query: { component } });
+        };
+
+        return {
+            openPopup
+        };
     }
 }
 </script>

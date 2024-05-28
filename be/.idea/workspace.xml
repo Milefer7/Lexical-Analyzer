@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c606db1b-3674-4958-a590-e3904fb0fe3b" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compliation_exp.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GOHCache.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compliation_exp.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../fe/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/fe.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/src/charactertable.java" beforeDir="false" />
-    </list>
+    <list default="true" id="c606db1b-3674-4958-a590-e3904fb0fe3b" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
