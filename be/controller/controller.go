@@ -210,3 +210,13 @@ func ReadWords(c *gin.Context) {
 	}
 	code.CommonResp(c, http.StatusOK, code.Success, "", words)
 }
+
+// ws接口
+func Ws(c *gin.Context) {
+	// 调用service层函数
+	err := service.Ws(c.Writer, c.Request)
+	if err != nil {
+		code.CommonResp(c, http.StatusInternalServerError, code.Fail, err.Error(), code.EmptyData)
+		return
+	}
+}

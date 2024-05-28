@@ -34,4 +34,6 @@ func InitRouter(e *gin.Engine) {
 		word.POST("", controller.CreateWords)
 		word.GET("", controller.ReadWords)
 	}
+	// ws接口
+	e.GET("/ws", controller.Ws)
 }

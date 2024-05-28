@@ -13,7 +13,7 @@ var db *gorm.DB
 
 func Init() {
 	// 赋予dsn值
-	err := godotenv.Load("be/.env")
+	err := godotenv.Load("../be/.env")
 	if err != nil {
 		log.Fatalf("加载 .env 失败: %v", err)
 	}
