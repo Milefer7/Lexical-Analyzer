@@ -1,31 +1,31 @@
 // src/router.js
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from './views/HomeView.vue'
-import PopupView from './views/PopupView.vue'
+import { createRouter, createWebHistory } from "vue-router"
+import HomeView from "./views/HomeView.vue"
+import PopupView from "./views/PopupView.vue"
 
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: HomeView,
-        cildren: [
-            {
-                path: 'popup',
-                name: 'Popup',
-                component: PopupView
-            }
-        ]
-    },
-    {
-        path: '/popup',
-        name: 'Popup',
-        component: PopupView
-    }
+  {
+    path: "/",
+    name: "Home",
+    component: HomeView,
+    children: [
+      {
+        path: "popup",
+        name: "Popup",
+        component: PopupView,
+      },
+    ],
+  },
+  {
+    path: "/popup",
+    name: "Popup",
+    component: PopupView,
+  },
 ]
 
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
 })
 
 export default router
