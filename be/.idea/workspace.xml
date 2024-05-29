@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c606db1b-3674-4958-a590-e3904fb0fe3b" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/model/keywords.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/keywords.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/src/components/KeywordTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../fe/src/components/KeywordTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fe/src/components/SyntaxRules.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../fe/src/components/SyntaxRules.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/delimiters.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/delimiters.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fe/src/components/DelimeterTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../fe/src/components/DelimeterTable.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

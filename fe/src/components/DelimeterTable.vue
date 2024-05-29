@@ -1,11 +1,7 @@
-<!-- src/components/DelimitersTable.vue -->
 <template>
-    <div class="delimiters-table">
-      <h2>单字符分隔符</h2>
-      <div class="form-group">
-        <input v-model="newDelimiter" placeholder="请输入单字符分隔符" />
-        <button @click="addDelimiter">添加</button>
-      </div>
+  <div class="delimiters-table">
+    <h2>单字符分隔符</h2>
+    <div class="table-container">
       <table>
         <thead>
           <tr>
@@ -16,91 +12,128 @@
         <tbody>
           <tr v-for="delimiter in delimiters" :key="delimiter.id">
             <td>{{ delimiter.id }}</td>
-            <td>{{ delimiter.symbol }}</td>
+            <td>
+              <input v-model="delimiter.name" />
+            </td>
           </tr>
         </tbody>
       </table>
-      <div class="actions">
-        <button @click="fetchDelimiters">查询</button>
-        <button @click="updateDelimiters">修改</button>
-      </div>
     </div>
-  </template>
-  
-  <script>
-  import axios from 'axios'
-  
-  export default {
-    data() {
-      return {
-        delimiters: [],
-        newDelimiter: ''
-      }
-    },
-    methods: {
-      async fetchDelimiters() {
-        try {
-          const response = await axios.get('http://127.0.0.1:8080/delimiters')
-          this.delimiters = response.data
-        } catch (error) {
-          console.error('Error fetching delimiters:', error)
-        }
-      },
-      async addDelimiter() {
-        try {
-          const response = await axios.post('http://127.0.0.1:8080/delimiters', {
-            symbol: this.newDelimiter
-          })
-          this.delimiters.push(response.data)
-          this.newDelimiter = ''
-        } catch (error) {
-          console.error('Error adding delimiter:', error)
-        }
-      },
-      async updateDelimiters() {
-        try {
-          await axios.put('http://127.0.0.1:8080/delimiters', this.delimiters)
-          alert('Delimiters updated successfully')
-        } catch (error) {
-          console.error('Error updating delimiters:', error)
-        }
-      }
-    },
-    created() {
-      this.fetchDelimiters()
-    }
+    <div class="buttons">
+      <button @click="fetchDelimiters">查询</button>
+      <button @click="addDelimiter">添加</button>
+      <button @click="updateDelimiters">修改</button>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+// Define reactive data
+const delimiters = ref([])
+
+// Define methods
+const fetchDelimiters = async () => {
+  try {
+    const response = await axios.get('/delimiters')
+    delimiters.value = response.data.data
+    console.log('Delimiters fetched successfully:', delimiters.value)
+  } catch (error) {
+    console.error('Error fetching delimiters:', error)
+    alert('获取单字符分隔符失败！' + error.response.data.msg)
   }
-  </script>
-  
-  <style scoped>
-  .delimiters-table {
-    width: 400px;
-    margin: auto;
+}
+
+const addDelimiter = async () => {
+  const ID = delimiters.value.length > 0 ? delimiters.value[delimiters.value.length - 1].id + 1 : 1
+  delimiters.value.push({ id: ID, name: '' })
+}
+
+const updateDelimiters = async () => {
+  try {
+    await axios.put('/delimiters', delimiters.value)
+    console.log('Delimiters updated successfully')
+    alert('修改成功！')
+  } catch (error) {
+    console.error('Error updating delimiters:', error)
+    alert('修改单字符分隔符失败！' + error.response.data.msg)
   }
-  .form-group {
-    display: flex;
-    margin-bottom: 10px;
-  }
-  input {
-    flex: 1;
-    padding: 5px;
-  }
-  button {
-    margin-left: 10px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  thead {
-    background-color: #f2f2f2;
-  }
-  .actions {
-    margin-top: 10px;
-  }
-  </style>
-  
+}
+
+// Fetch delimiters on component mount
+onMounted(fetchDelimiters)
+</script>
+
+<style scoped>
+.delimiters-table {
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.table-container {
+  height: 400px;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  background-color: #fff;
+}
+
+th {
+  background-color: #f1f1f1;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+</style>
