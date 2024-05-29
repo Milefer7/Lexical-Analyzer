@@ -61,6 +61,7 @@ const fetchCharacters = async () => {
         }
     } catch (error) {
         console.error('Error fetching characters:', error)
+        alert('获取数据失败！', + error.response.data.msg)
     }
 }
 
