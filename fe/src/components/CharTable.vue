@@ -10,8 +10,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="char in visibleCharacters" :key="char.id">
-                    <td>{{ char.id }}</td>
+                <tr v-for="char in visibleCharacters" :key="char.key">
+                    <td>{{ char.key }}</td>
                     <td>
                         <input v-model="char.name" />
                     </td>
@@ -21,7 +21,7 @@
                         <select v-model="selectedCharId" @change="handleSelectChange">
                             <option disabled value="">选择更多字符</option>
                             <option v-for="char in hiddenCharacters" :key="char.id" :value="char.id">
-                                {{ char.id }}: {{ char.name }}
+                                {{ char.key }}: {{ char.value }}
                             </option>
                         </select>
                     </td>
@@ -35,59 +35,55 @@
     </div>
 </template>
 
-<script>
-import axios from 'axios';
+<script setup>
+import { reactive, computed } from 'vue'
+import axios from 'axios'
 
-export default {
-    data() {
-        return {
-            characters: [],
-            selectedCharId: ''
-        };
-    },
-    computed: {
-        visibleCharacters() {
-            return this.characters.slice(0, 10);
-        },
-        hiddenCharacters() {
-            return this.characters.slice(10);
+// Define reactive data
+const state = reactive({
+    characters: [],
+    selectedCharId: ''
+})
+
+// Define computed properties
+const visibleCharacters = computed(() => state.characters.slice(0, 10))
+const hiddenCharacters = computed(() => state.characters.slice(79))
+
+// Define methods
+const fetchCharacters = async () => {
+    try {
+        const response = await axios.get('/alphabets')
+        if (response.data.code === 1) {
+            state.characters = response.data.data
+            // 写入到框中展示
+            console.log('Characters fetched successfully:', state.characters)
+        } else {
+            console.error('Error fetching characters:', response.data.msg)
         }
-    },
-    methods: {
-        fetchCharacters() {
-            axios.get('/alphabets')
-                .then(response => {
-                    if (response.data.code === 1) {
-                        this.characters = response.data.data;
-                    } else {
-                        console.error('Error fetching characters:', response.data.msg);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching characters:', error);
-                });
-        },
-        updateCharacters() {
-            const updates = this.characters.map(char => ({
-                key: char.id,
-                value: char.name
-            }));
-            axios.put('/alphabets', updates)
-                .then(response => {
-                    console.log('Characters updated successfully:', response.data);
-                })
-                .catch(error => {
-                    console.error('Error updating characters:', error);
-                });
-        },
-        handleSelectChange() {
-            const selectedChar = this.hiddenCharacters.find(char => char.id === this.selectedCharId);
-            if (selectedChar) {
-                this.visibleCharacters.push(selectedChar);
-                this.characters = this.characters.filter(char => char.id !== this.selectedCharId);
-                this.selectedCharId = '';
-            }
-        }
+    } catch (error) {
+        console.error('Error fetching characters:', error)
+    }
+}
+
+const updateCharacters = async () => {
+    const updates = state.characters.map(char => ({
+        key: char.id,
+        value: char.name
+    }))
+    try {
+        const response = await axios.put('/alphabets', updates)
+        console.log('Characters updated successfully:', response.data)
+    } catch (error) {
+        console.error('Error updating characters:', error)
+    }
+}
+
+const handleSelectChange = () => {
+    const selectedChar = hiddenCharacters.value.find(char => char.key === state.selectedCharId)
+    if (selectedChar) {
+        state.characters = state.characters.filter(char => char.key !== state.selectedCharId)
+        state.characters.splice(10, 0, selectedChar)
+        state.selectedCharId = ''
     }
 }
 </script>
