@@ -212,11 +212,11 @@ func ReadWords(c *gin.Context) {
 }
 
 // ws接口
-//func Ws(c *gin.Context) {
-//	// 调用service层函数
-//	err := service.Ws(c.Writer, c.Request)
-//	if err != nil {
-//		code.CommonResp(c, http.StatusInternalServerError, code.Fail, err.Error(), code.EmptyData)
-//		return
-//	}
-//}
+func Ws(c *gin.Context) {
+	// 调用service层函数
+	err := service.Ws(c.Writer, c.Request)
+	if err != nil {
+		code.CommonResp(c, http.StatusInternalServerError, code.Fail, err.Error(), code.EmptyData)
+		return
+	}
+}
