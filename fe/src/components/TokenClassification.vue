@@ -37,7 +37,7 @@ export default {
                 const response = await axios.get('/words')
                 const data = response.data.data
 
-                console.log('Fetched data:', data) // 添加调试信息
+                // console.log('Fetched data:', data) // 添加调试信息
 
                 // 创建一个对象，键是 name 字段的值，值是 word 字段的值
                 const wordMap = data.reduce((acc, item) => {
@@ -45,14 +45,15 @@ export default {
                     return acc
                 }, {})
 
-                console.log('Mapped word data:', wordMap) // 添加调试信息
+                // console.log('Mapped word data:', wordMap) // 添加调试信息
 
                 tokens.value = tokens.value.map(token => ({
                     ...token,
                     value: wordMap[token.label] || ''
                 }))
 
-                console.log('Updated tokens:', tokens.value) // 添加调试信息
+                // console.log('Updated tokens:', tokens.value) // 添加调试信息
+                alert('单词查询成功！')
             } catch (error) {
                 console.error('Error fetching tokens:', error)
             }
@@ -142,10 +143,10 @@ button:hover {
 }
 
 button[type="button"] {
-    background-color: #6c757d;
+    background-color: #007bff;
 }
 
 button[type="button"]:hover {
-    background-color: #5a6268;
+    background-color: #0056b3;
 }
 </style>

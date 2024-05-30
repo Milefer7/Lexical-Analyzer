@@ -12,18 +12,18 @@
       <div class="table-container">
         <table>
           <thead class="table-header">
-            <tr>
-              <th>行号</th>
-              <th>单词内容</th>
-              <th>单词种类</th>
-            </tr>
+          <tr>
+            <th>行号</th>
+            <th>单词内容</th>
+            <th>单词种类</th>
+          </tr>
           </thead>
           <tbody>
-            <tr v-for="result in analysisResults" :key="result.lineNum + result.content">
-              <td>{{ result.lineNum }}</td>
-              <td>{{ result.content }}</td>
-              <td>{{ result.type }}</td>
-            </tr>
+          <tr v-for="result in analysisResults" :key="result.lineNum + result.content">
+            <td>{{ result.lineNum }}</td>
+            <td>{{ result.content }}</td>
+            <td>{{ result.type }}</td>
+          </tr>
           </tbody>
         </table>
       </div>
@@ -41,8 +41,7 @@ const sourceCode = ref('')
 const analysisResults = ref([])
 
 // 默认代码
-const defaultCode = `
-program p
+const defaultCode = `program p
 var i : integer ;
   x : array [1..16] of integer ;
 begin
@@ -76,16 +75,26 @@ const performLexicalAnalysis = async () => {
 
 // 导出单词
 const exportWords = () => {
-  const csvContent = "data:text/csv;charset=utf-8,"
-    + "行号,单词内容,单词种类\n"
-    + analysisResults.value.map(e => `${e.lineNum},${e.content},${e.type}`).join("\n")
-  const encodedUri = encodeURI(csvContent)
-  const link = document.createElement("a")
-  link.setAttribute("href", encodedUri)
-  link.setAttribute("download", "lexical_analysis_results.csv")
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+  const BOM = '\uFEFF';
+  const csvContent = BOM + "行号,单词内容,单词种类\n"
+      + analysisResults.value.map(e => `${e.lineNum},${e.content},${e.type}`).join("\n");
+
+  // 创建 Blob 对象
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement("a");
+
+  // 创建下载链接
+  const url = URL.createObjectURL(blob);
+  link.setAttribute("href", url);
+  link.setAttribute("download", "lexical_analysis_results.csv");
+
+  // 触发下载
+  document.body.appendChild(link);
+  link.click();
+
+  // 移除下载链接
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url); // 释放内存
 }
 </script>
 

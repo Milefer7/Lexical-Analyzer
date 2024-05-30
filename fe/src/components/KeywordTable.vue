@@ -39,7 +39,8 @@ const fetchKeywords = async () => {
     try {
         const response = await axios.get('/keywords')
         keywords.value = response.data.data
-        console.log('Keywords fetched successfully:', keywords.value)
+        // console.log('Keywords fetched successfully:', keywords.value)
+        alert('获取关键字成功！')
     } catch (error) {
         console.error('Error fetching keywords:', error)
         alert('获取关键字失败！' + error.response.data.msg)

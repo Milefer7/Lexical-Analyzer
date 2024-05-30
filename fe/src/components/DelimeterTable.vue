@@ -39,7 +39,8 @@ const fetchDelimiters = async () => {
   try {
     const response = await axios.get('/delimiters')
     delimiters.value = response.data.data
-    console.log('Delimiters fetched successfully:', delimiters.value)
+    // console.log('Delimiters fetched successfully:', delimiters.value)
+    alert('获取单字符分隔符成功！')
   } catch (error) {
     console.error('Error fetching delimiters:', error)
     alert('获取单字符分隔符失败！' + error.response.data.msg)

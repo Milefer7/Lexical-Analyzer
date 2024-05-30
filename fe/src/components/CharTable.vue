@@ -55,7 +55,7 @@ const fetchCharacters = async () => {
         const response = await axios.get('/alphabets')
         if (response.data.code === 1) {
             state.characters = response.data.data
-            console.log('Characters fetched successfully:', state.characters)
+            // console.log('Characters fetched successfully:', state.characters)
         } else {
             console.error('Error fetching characters:', response.data.msg)
         }
