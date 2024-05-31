@@ -138,6 +138,8 @@
       - [PopupView.vue](./fe/src/views/PopupView.vue) - 弹出视图
   - [vue.config.js](./fe/vue.config.js) - Vue的配置文件
 
+* ![image-20240531174922111](https://my-note-drawing-bed-1322822796.cos.ap-shanghai.myqcloud.com/picture/202405311749254.png)
+
 ## 准备
 
 ### 环境准备
