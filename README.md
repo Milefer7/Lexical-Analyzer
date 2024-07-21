@@ -94,12 +94,12 @@
   - [go.mod](./be/go.mod) - Go模块的依赖管理文件
   - [go.sum](./be/go.sum) - Go模块的依赖校验文件
   - [main.go](./be/main.go) - 后端服务的入口文件
-  - [model](./be/model) - 数据模型目录，定义数据结构
-    - [alphabets.go](./be/model/alphabets.go) - 字母表的数据模型
-    - [analysis.go](./be/model/analysis.go) - 分析的数据模型
-    - [delimiters.go](./be/model/delimiters.go) - 分隔符的数据模型
-    - [keywords.go](./be/model/keywords.go) - 关键字的数据模型
-    - [words.go](./be/model/words.go) - 单词的数据模型
+  - [model](be/dal/model) - 数据模型目录，定义数据结构
+    - [alphabets.go](be/dal/model/alphabets.go) - 字母表的数据模型
+    - [analysis.go](be/dal/model/analysis.go) - 分析的数据模型
+    - [delimiters.go](be/dal/model/delimiters.go) - 分隔符的数据模型
+    - [keywords.go](be/dal/model/keywords.go) - 关键字的数据模型
+    - [words.go](be/dal/model/words.go) - 单词的数据模型
   - [router](./be/router) - 路由目录，定义路由规则
     - [router.go](./be/router/router.go) - 路由的主要代码
   - [service](./be/service) - 服务目录，处理业务逻辑

@@ -1,8 +1,8 @@
 package service
 
 import (
+	"github.com/Milefer7/compliation_exp/dal/model"
 	"github.com/Milefer7/compliation_exp/dao/mysql"
-	"github.com/Milefer7/compliation_exp/model"
 )
 
 type DelimitersService struct{}

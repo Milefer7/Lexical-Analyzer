@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	"github.com/Milefer7/compliation_exp/model"
+	"github.com/Milefer7/compliation_exp/dal/model"
 	"log"
 )
 
@@ -13,7 +13,7 @@ func NewDelimiterMySQL() *DelimiterMySQL {
 
 func (d *DelimiterMySQL) ReadDelimiters() ([]model.Delimiter, error) {
 	deli := []model.Delimiter{}
-	result := db.Find(&deli)
+	result := DB.Find(&deli)
 	if result.Error != nil {
 		log.Printf("ReadDelimiter数据库查询错误: %s", result.Error)
 	}
@@ -22,7 +22,7 @@ func (d *DelimiterMySQL) ReadDelimiters() ([]model.Delimiter, error) {
 
 func (d *DelimiterMySQL) UpdateDelimiters(Delimiters []model.Delimiter) error {
 	for _, delimiter := range Delimiters {
-		result := db.Save(&delimiter)
+		result := DB.Save(&delimiter)
 		if result.Error != nil {
 			log.Printf("UpdateDelimiter数据库更新错误: %s", result.Error)
 			return result.Error
@@ -33,7 +33,7 @@ func (d *DelimiterMySQL) UpdateDelimiters(Delimiters []model.Delimiter) error {
 
 func (d *DelimiterMySQL) CreateDelimiters(Delimiters []model.Delimiter) error {
 	for _, delimiter := range Delimiters {
-		result := db.Create(&delimiter)
+		result := DB.Create(&delimiter)
 		if result.Error != nil {
 			log.Printf("CreateDelimiter数据库创建错误: %s", result.Error)
 			return result.Error

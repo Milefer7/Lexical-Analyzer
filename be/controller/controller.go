@@ -2,7 +2,7 @@ package controller
 
 import (
 	"github.com/Milefer7/compliation_exp/code"
-	"github.com/Milefer7/compliation_exp/model"
+	model2 "github.com/Milefer7/compliation_exp/dal/model"
 	"github.com/Milefer7/compliation_exp/service"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -26,7 +26,7 @@ func ReadKeywords(c *gin.Context) {
 
 // 更新关键词表
 func UpdateKeywords(c *gin.Context) {
-	keywords := []model.Keywords{}
+	keywords := []model2.Keywords{}
 	err := c.ShouldBindJSON(&keywords)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -42,7 +42,7 @@ func UpdateKeywords(c *gin.Context) {
 
 // 创建关键词表
 func CreateKeywords(c *gin.Context) {
-	keywords := []model.Keywords{}
+	keywords := []model2.Keywords{}
 	err := c.ShouldBindJSON(&keywords)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -70,7 +70,7 @@ func ReadDelimiters(c *gin.Context) {
 
 // 更新分界符表
 func UpdateDelimiters(c *gin.Context) {
-	delimiters := []model.Delimiter{}
+	delimiters := []model2.Delimiter{}
 	err := c.ShouldBindJSON(&delimiters)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -86,7 +86,7 @@ func UpdateDelimiters(c *gin.Context) {
 
 // 创建分界符表
 func CreateDelimiters(c *gin.Context) {
-	delimiters := []model.Delimiter{}
+	delimiters := []model2.Delimiter{}
 	err := c.ShouldBindJSON(&delimiters)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -104,7 +104,7 @@ func CreateDelimiters(c *gin.Context) {
 // 获取词法分析结果
 func LexicalAnalysis(c *gin.Context) {
 	// 接受json数据
-	data := model.LexicalCode{}
+	data := model2.LexicalCode{}
 	err := c.ShouldBindJSON(&data)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -139,7 +139,7 @@ func ReadAlphabets(c *gin.Context) {
 // 更新字符表
 func UpdateAlphabets(c *gin.Context) {
 	//获取前端传的数据
-	alphabet := []model.Alphabet{}
+	alphabet := []model2.Alphabet{}
 	err := c.ShouldBindJSON(&alphabet)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -154,7 +154,7 @@ func UpdateAlphabets(c *gin.Context) {
 }
 
 func CreateAlphabets(c *gin.Context) {
-	alphabet := []model.Alphabet{}
+	alphabet := []model2.Alphabet{}
 	err := c.ShouldBindJSON(&alphabet)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -172,7 +172,7 @@ func CreateAlphabets(c *gin.Context) {
 // 更新单词
 func UpdateWords(c *gin.Context) {
 	// 获取前端传的数据
-	words := []model.Words{}
+	words := []model2.Words{}
 	err := c.ShouldBindJSON(&words)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
@@ -187,7 +187,7 @@ func UpdateWords(c *gin.Context) {
 }
 
 func CreateWords(c *gin.Context) {
-	words := []model.Words{}
+	words := []model2.Words{}
 	err := c.ShouldBindJSON(&words)
 	if err != nil {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)

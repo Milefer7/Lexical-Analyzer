@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	"github.com/Milefer7/compliation_exp/model"
+	"github.com/Milefer7/compliation_exp/dal/model"
 	"log"
 )
 
@@ -13,7 +13,7 @@ func NewWordsMySQL() *WordsMySQL {
 
 func (WordsMySQL *WordsMySQL) UpdateWord(words []model.Words) error {
 	for _, word := range words {
-		if err := db.Save(&word).Error; err != nil {
+		if err := DB.Save(&word).Error; err != nil {
 			log.Println(err.Error())
 			return err
 		}
@@ -23,7 +23,7 @@ func (WordsMySQL *WordsMySQL) UpdateWord(words []model.Words) error {
 
 func (WordsMySQL *WordsMySQL) CreatWords(words []model.Words) error {
 	for _, word := range words {
-		if err := db.Create(&word).Error; err != nil {
+		if err := DB.Create(&word).Error; err != nil {
 			log.Println(err.Error())
 			return err
 		}
@@ -33,7 +33,7 @@ func (WordsMySQL *WordsMySQL) CreatWords(words []model.Words) error {
 
 func (WordsMySQL *WordsMySQL) ReadWords() (error, []model.Words) {
 	words := []model.Words{}
-	if err := db.Find(&words).Error; err != nil {
+	if err := DB.Find(&words).Error; err != nil {
 		log.Println(err.Error())
 		return err, nil
 	}

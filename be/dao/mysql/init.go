@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	"github.com/Milefer7/compliation_exp/model"
+	model2 "github.com/Milefer7/compliation_exp/dal/model"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-var db *gorm.DB
+var DB *gorm.DB
 
 func Init() {
 	// 赋予dsn值
@@ -26,15 +26,15 @@ func Init() {
 	// 数据库表初始化
 	initTable(d)
 	// 将连接赋值给db
-	db = d
+	DB = d
 }
 
 func initTable(db *gorm.DB) {
 	err := db.AutoMigrate(
-		&model.Alphabet{},
-		&model.Delimiter{},
-		&model.Words{},
-		&model.Keywords{},
+		&model2.Alphabet{},
+		&model2.Delimiter{},
+		&model2.Words{},
+		&model2.Keywords{},
 	)
 	if err != nil {
 		log.Fatalf("数据库表初始化错误: %s", err)

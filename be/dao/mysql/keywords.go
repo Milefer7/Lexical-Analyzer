@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	"github.com/Milefer7/compliation_exp/model"
+	"github.com/Milefer7/compliation_exp/dal/model"
 	"log"
 )
 
@@ -14,7 +14,7 @@ func NewKeywordsMySQL() *KeywordsMySQL {
 
 func (kw *KeywordsMySQL) ReadKeywords() ([]model.Keywords, error) {
 	keywords := []model.Keywords{}
-	result := db.Find(&keywords)
+	result := DB.Find(&keywords)
 	if result.Error != nil {
 		log.Printf("readKeyword数据库查询错误: %s", result.Error)
 	}
@@ -23,7 +23,7 @@ func (kw *KeywordsMySQL) ReadKeywords() ([]model.Keywords, error) {
 
 func (kw *KeywordsMySQL) CreateKeywords(keywords []model.Keywords) error {
 	for _, keyword := range keywords {
-		result := db.Create(&keyword)
+		result := DB.Create(&keyword)
 		if result.Error != nil {
 			log.Printf("CreateKeyword数据库插入错误: %s", result.Error)
 			return result.Error
@@ -34,7 +34,7 @@ func (kw *KeywordsMySQL) CreateKeywords(keywords []model.Keywords) error {
 
 func (kw *KeywordsMySQL) UpdateKeywords(keywords []model.Keywords) error {
 	for _, keyword := range keywords {
-		result := db.Save(&keyword)
+		result := DB.Save(&keyword)
 		if result.Error != nil {
 			log.Printf("UpdateKeyword数据库更新错误: %s", result.Error)
 			return result.Error
