@@ -6,7 +6,6 @@ package query
 
 import (
 	"context"
-	"github.com/Milefer7/compliation_exp/dal/model"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
@@ -16,6 +15,8 @@ import (
 	"gorm.io/gen/field"
 
 	"gorm.io/plugin/dbresolver"
+
+	"github.com/Milefer7/compliation_exp/dal/model"
 )
 
 func newKeywords(db *gorm.DB, opts ...gen.DOOption) keywords {
@@ -35,7 +36,7 @@ func newKeywords(db *gorm.DB, opts ...gen.DOOption) keywords {
 }
 
 type keywords struct {
-	keywordsDo keywordsDo
+	keywordsDo
 
 	ALL     field.Asterisk
 	Id      field.Int
@@ -63,14 +64,6 @@ func (k *keywords) updateTableName(table string) *keywords {
 
 	return k
 }
-
-func (k *keywords) WithContext(ctx context.Context) *keywordsDo { return k.keywordsDo.WithContext(ctx) }
-
-func (k keywords) TableName() string { return k.keywordsDo.TableName() }
-
-func (k keywords) Alias() string { return k.keywordsDo.Alias() }
-
-func (k keywords) Columns(cols ...field.Expr) gen.Columns { return k.keywordsDo.Columns(cols...) }
 
 func (k *keywords) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 	_f, ok := k.fieldMap[fieldName]

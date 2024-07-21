@@ -6,7 +6,6 @@ package query
 
 import (
 	"context"
-	"github.com/Milefer7/compliation_exp/dal/model"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
@@ -16,6 +15,8 @@ import (
 	"gorm.io/gen/field"
 
 	"gorm.io/plugin/dbresolver"
+
+	"github.com/Milefer7/compliation_exp/dal/model"
 )
 
 func newAlphabet(db *gorm.DB, opts ...gen.DOOption) alphabet {
@@ -35,7 +36,7 @@ func newAlphabet(db *gorm.DB, opts ...gen.DOOption) alphabet {
 }
 
 type alphabet struct {
-	alphabetDo alphabetDo
+	alphabetDo
 
 	ALL   field.Asterisk
 	Key   field.Int
@@ -63,14 +64,6 @@ func (a *alphabet) updateTableName(table string) *alphabet {
 
 	return a
 }
-
-func (a *alphabet) WithContext(ctx context.Context) *alphabetDo { return a.alphabetDo.WithContext(ctx) }
-
-func (a alphabet) TableName() string { return a.alphabetDo.TableName() }
-
-func (a alphabet) Alias() string { return a.alphabetDo.Alias() }
-
-func (a alphabet) Columns(cols ...field.Expr) gen.Columns { return a.alphabetDo.Columns(cols...) }
 
 func (a *alphabet) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 	_f, ok := a.fieldMap[fieldName]

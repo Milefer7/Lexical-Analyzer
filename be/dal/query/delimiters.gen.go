@@ -6,7 +6,6 @@ package query
 
 import (
 	"context"
-	"github.com/Milefer7/compliation_exp/dal/model"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
@@ -16,6 +15,8 @@ import (
 	"gorm.io/gen/field"
 
 	"gorm.io/plugin/dbresolver"
+
+	"github.com/Milefer7/compliation_exp/dal/model"
 )
 
 func newDelimiter(db *gorm.DB, opts ...gen.DOOption) delimiter {
@@ -35,7 +36,7 @@ func newDelimiter(db *gorm.DB, opts ...gen.DOOption) delimiter {
 }
 
 type delimiter struct {
-	delimiterDo delimiterDo
+	delimiterDo
 
 	ALL  field.Asterisk
 	ID   field.Int
@@ -63,16 +64,6 @@ func (d *delimiter) updateTableName(table string) *delimiter {
 
 	return d
 }
-
-func (d *delimiter) WithContext(ctx context.Context) *delimiterDo {
-	return d.delimiterDo.WithContext(ctx)
-}
-
-func (d delimiter) TableName() string { return d.delimiterDo.TableName() }
-
-func (d delimiter) Alias() string { return d.delimiterDo.Alias() }
-
-func (d delimiter) Columns(cols ...field.Expr) gen.Columns { return d.delimiterDo.Columns(cols...) }
 
 func (d *delimiter) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 	_f, ok := d.fieldMap[fieldName]

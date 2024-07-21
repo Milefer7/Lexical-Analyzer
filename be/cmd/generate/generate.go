@@ -10,10 +10,11 @@ func main() {
 	// 创建一个新的生成器，配置输出路径和模式
 	g := gen.NewGenerator(gen.Config{
 		OutPath: "../../dal/query",
+		Mode:    gen.WithoutContext | gen.WithDefaultQuery,
 	})
 
 	// 使用已经初始化的数据库
-	g.UseDB(mysql.DB)
+	g.UseDB(mysql.ConnDb())
 
 	// 这个是从数据库表生成模型的模板
 	//userTpl := g.GenerateModel("inv_lists")

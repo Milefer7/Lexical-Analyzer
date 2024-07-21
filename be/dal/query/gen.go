@@ -15,6 +15,24 @@ import (
 	"gorm.io/plugin/dbresolver"
 )
 
+var (
+	Q               = new(Query)
+	Alphabet        *alphabet
+	Delimiter       *delimiter
+	Keywords        *keywords
+	LexicalAnalysis *lexicalAnalysis
+	Words           *words
+)
+
+func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
+	*Q = *Use(db, opts...)
+	Alphabet = &Q.Alphabet
+	Delimiter = &Q.Delimiter
+	Keywords = &Q.Keywords
+	LexicalAnalysis = &Q.LexicalAnalysis
+	Words = &Q.Words
+}
+
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
 		db:              db,

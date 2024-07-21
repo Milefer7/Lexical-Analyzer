@@ -6,7 +6,6 @@ package query
 
 import (
 	"context"
-	"github.com/Milefer7/compliation_exp/dal/model"
 
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
@@ -16,6 +15,8 @@ import (
 	"gorm.io/gen/field"
 
 	"gorm.io/plugin/dbresolver"
+
+	"github.com/Milefer7/compliation_exp/dal/model"
 )
 
 func newLexicalAnalysis(db *gorm.DB, opts ...gen.DOOption) lexicalAnalysis {
@@ -36,7 +37,7 @@ func newLexicalAnalysis(db *gorm.DB, opts ...gen.DOOption) lexicalAnalysis {
 }
 
 type lexicalAnalysis struct {
-	lexicalAnalysisDo lexicalAnalysisDo
+	lexicalAnalysisDo
 
 	ALL     field.Asterisk
 	LineNum field.Int
@@ -65,18 +66,6 @@ func (l *lexicalAnalysis) updateTableName(table string) *lexicalAnalysis {
 	l.fillFieldMap()
 
 	return l
-}
-
-func (l *lexicalAnalysis) WithContext(ctx context.Context) *lexicalAnalysisDo {
-	return l.lexicalAnalysisDo.WithContext(ctx)
-}
-
-func (l lexicalAnalysis) TableName() string { return l.lexicalAnalysisDo.TableName() }
-
-func (l lexicalAnalysis) Alias() string { return l.lexicalAnalysisDo.Alias() }
-
-func (l lexicalAnalysis) Columns(cols ...field.Expr) gen.Columns {
-	return l.lexicalAnalysisDo.Columns(cols...)
 }
 
 func (l *lexicalAnalysis) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
