@@ -32,6 +32,9 @@ func UpdateKeywords(c *gin.Context) {
 		code.CommonResp(c, http.StatusBadRequest, code.Fail, err.Error(), code.EmptyData)
 		return
 	}
+	//for i, keyword := range keywords {
+	//	fmt.Printf("Keyword %d: %v\n", i, *keyword)
+	//}
 	err = biz.UpdateKeywords(keywords)
 	if err != nil {
 		code.CommonResp(c, http.StatusInternalServerError, code.Fail, err.Error(), code.EmptyData)

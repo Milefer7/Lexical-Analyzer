@@ -1,14 +1,15 @@
 package biz
 
 import (
+	"github.com/Milefer7/compliation_exp/dal"
 	"github.com/Milefer7/compliation_exp/dal/model"
 	"github.com/Milefer7/compliation_exp/dal/query"
-	"github.com/Milefer7/compliation_exp/dao/mysql"
+
 	"github.com/gin-gonic/gin"
 )
 
 func ReadKeywords(c *gin.Context) ([]*model.Keywords, error) {
-	var q = query.Use(mysql.Db)
+	var q = query.Use(dal.Db)
 	Q := q.Keywords.WithContext(c.Request.Context())
 	keywords, err := Q.Find()
 	if err != nil {
@@ -18,7 +19,7 @@ func ReadKeywords(c *gin.Context) ([]*model.Keywords, error) {
 }
 
 func UpdateKeywords(u []*model.Keywords) error {
-	err := query.Q.Keywords.Save(u...)
+	err := query.Keywords.Save(u...)
 	if err != nil {
 		return err
 	}

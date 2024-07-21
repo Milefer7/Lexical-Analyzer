@@ -3,7 +3,8 @@ package biz
 import (
 	"errors"
 	model2 "github.com/Milefer7/compliation_exp/dal/model"
-	"github.com/Milefer7/compliation_exp/dao/mysql"
+	"github.com/Milefer7/compliation_exp/dal/query"
+
 	"log"
 	"strings"
 	"unicode"
@@ -14,11 +15,11 @@ var DoubleDelimiters = map[string]string{":": "="}
 // 自动机词法分析函数
 func LexicalAnalysis(code string) ([]model2.LexicalAnalysis, error) {
 	// 数据准备
-	Keywords, err := mysql.NewKeywordsMySQL().ReadKeywords() // 准备关键字
+	Keywords, err := query.Keywords.Find() // 准备关键字
 	if err != nil {
 		return nil, err
 	}
-	Delimiters, err := mysql.NewDelimiterMySQL().ReadDelimiters() // 准备分界符
+	Delimiters, err := query.Delimiter.Find() // 准备分界符
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +121,7 @@ func LexicalAnalysis(code string) ([]model2.LexicalAnalysis, error) {
 }
 
 // 判断是否是关键字
-func isKeyword(word string, keywords []model2.Keywords) bool {
+func isKeyword(word string, keywords []*model2.Keywords) bool {
 	for _, keyword := range keywords {
 		if word == keyword.Keyword {
 			return true
@@ -130,7 +131,7 @@ func isKeyword(word string, keywords []model2.Keywords) bool {
 }
 
 // 判断是否是单字符分界符
-func isDelimiter(ch string, delimiters []model2.Delimiter) bool {
+func isDelimiter(ch string, delimiters []*model2.Delimiter) bool {
 	for _, delimiter := range delimiters {
 		if ch == delimiter.Name {
 			return true
